@@ -4,16 +4,20 @@ import { View, Text, FlatList, StyleSheet } from 'react-native';
 const Cart = ({ route }) => {
   const [cart, setCart] = useState([]);
 
+  // Actualiza el carrito cada vez que se agregue un producto
   useEffect(() => {
     if (route.params?.product && route.params?.quantity) {
       const { product, quantity } = route.params;
       setCart((prevCart) => {
+        // Verifica si el producto ya está en el carrito
         const existingProduct = prevCart.find((item) => item.id === product.id);
         if (existingProduct) {
+          // Si está, actualiza la cantidad
           return prevCart.map((item) =>
             item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
           );
         }
+        // Si no está, agrega el nuevo producto al carrito
         return [...prevCart, { ...product, quantity }];
       });
     }

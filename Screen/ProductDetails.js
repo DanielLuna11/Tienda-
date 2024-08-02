@@ -13,7 +13,7 @@ const ProductDetails = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image source={product.image} style={styles.productImage} />
+      <Image source={{ uri: product.image }} style={styles.productImage} />
       <Text style={styles.productName}>{product.name}</Text>
       <Text style={styles.productPrice}>Precio: ${product.price}</Text>
       <Text style={styles.productDescription}>{product.description}</Text>
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   productImage: {
-    width: '100%',
-    height: 250,
+    width: '35%',
+    height: 270,
     marginBottom: 16,
   },
   productName: {
